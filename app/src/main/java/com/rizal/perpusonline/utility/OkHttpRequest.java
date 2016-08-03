@@ -30,46 +30,5 @@ public class OkHttpRequest {
         return call;
     }
 
-    public static Call postDataToServer(String url, RequestBody params) throws IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .build();
 
-        Request request = new Request.Builder()
-                .url(url)
-                .post(params)
-                .build();
-
-        return client.newCall(request);
-    }
-    public static Call putDataToServer(String url, RequestBody params) throws IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .put(params)
-                .build();
-
-        return client.newCall(request);
-    }
-    public static Call deleteDataToServer(String url) throws IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .delete()
-                .build();
-
-        return client.newCall(request);
-    }
 }

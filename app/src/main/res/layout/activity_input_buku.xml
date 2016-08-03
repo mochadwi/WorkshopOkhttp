@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/txtKodeBuku"
+            android:id="@+id/inKode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/txtJudulBuku"
+            android:id="@+id/inJudul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/txtPengarangBk"
+            android:id="@+id/inPengarang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/penerbitBk"
+            android:id="@+id/inPenerbit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/txtTahunBk"
+            android:id="@+id/inTahun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/hargaBk"
+            android:id="@+id/inHarga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/stokBk"
+            android:id="@+id/inStok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="8pt"
