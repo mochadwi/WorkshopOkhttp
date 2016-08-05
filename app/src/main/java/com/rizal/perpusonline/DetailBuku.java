@@ -35,6 +35,10 @@ public class DetailBuku extends AppCompatActivity {
     String pengarang;
     String penerbits;
     String url = "";
+
+    Button hapus;
+    Button update;
+
     int tahuns;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,27 @@ public class DetailBuku extends AppCompatActivity {
         pengarangs = (TextView)findViewById(R.id.spengarang);
         penerbit = (TextView)findViewById(R.id.spenerbit);
         tahun = (TextView)findViewById(R.id.stahun);
-
+        hapus = (Button)findViewById(R.id.hapus);
+        update = (Button)findViewById(R.id.edit);
         prepareData();
+        hapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hapus();
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putString("kode_buku",kdBuku);
+                Intent i = new Intent(getBaseContext(),UpdateBuku.class);
+                i.putExtras(b);
+                startActivity(i);
+
+            }
+        });
+
         setupTool();
 
 
@@ -100,7 +123,36 @@ public class DetailBuku extends AppCompatActivity {
         });
     }
     private void hapus() {
+        OkHttpRequest.hapusData(url).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.isSuccessful()){
+                    String pesan = "";
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        pesan = jsonObject.optString("message");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    final String fpesan = pesan;
+                    DetailBuku.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getBaseContext(),fpesan,Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getBaseContext(),MainActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    });
+                }
+            }
+        });
     }
     private void setupTool(){
         Toolbar tool = (Toolbar)findViewById(R.id.toolbar);
